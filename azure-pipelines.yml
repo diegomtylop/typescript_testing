@@ -14,7 +14,8 @@ steps:
   inputs:
     versionSpec: '17.x'
   displayName: 'Install Node.js'
-
+- script: 
+    cd ./mock-aut-testing-fw    
 - script: |
     npm install
     npm test
