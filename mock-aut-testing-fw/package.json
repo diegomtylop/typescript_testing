@@ -1,0 +1,31 @@
+{
+  "name": "mock-aut-testing-fw",
+  "version": "1.0.0",
+  "description": "Mock automation framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "test_report": "mocha --retries 2 --reporter mochawesome --reporter-options reportDir=reports,json=false,reportFilename=report[status]_[datetime]_report,timestamp=yyyy-mm-dd_HH-MM-ss,reportTitle=Generic\\ report,reportPageTitle=Generic\\ report"
+  },
+  "keywords": [
+    "ts",
+    "test",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mocha": "^9.1.1",
+    "chai": "^4.3.6",
+    "mocha": "^9.2.2",
+    "mochawesome": "^7.1.3",
+    "supertest": "^6.2.2",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "ajv": "^8.11.0",
+    "ajv-formats": "^2.1.1",
+    "dotenv": "^16.0.0",
+    "ts-node": "^10.7.0"
+  }
+}
