@@ -19,6 +19,7 @@ jobs:
 - job: first_mock_job
   steps:
   - bash: echo "this is the first job that does nothing more than this message"
+  - bash: touch mockfile.txt
   - bash: pwd
   - bash: ls -la
 - job: actual_job
