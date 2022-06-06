@@ -8,28 +8,37 @@ trigger:
 
 pool:
   name: Default
-strategy:
-  matrix:
-    node_16_x:
-      node_version: 16.x
-    node_17_x:
-      node_version: 17.x
+#strategy:
+#  matrix:
+#    node_16_x:
+#      node_version: 16.x
+#    node_17_x:
+#      node_version: 17.x
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: $(node_version)
-  displayName: 'Install Node.js'
-- script: |
-    pwd
-    ls -la
-    cd ./mock-aut-testing-fw
-    npm install
-    npm run test_junit
-  displayName: 'npm install and test'
-- task: PublishTestResults@2
-  condition: succeededOrFailed()
-  inputs:
-    testRunner: JUnit
-    testResultsFiles: '**/test-results.xml'
+jobs:
+- job: first_mock_job
+  steps:
+  - bash: echo "this is the first job that does nothing more than this message"
+- job: actual_job
+  steps:
+  - task: NodeTool@0
+    inputs:
+      #versionSpec: $(node_version)
+      versionSpec: 17.x
+    displayName: 'Install Node.js'
+  - script: |
+      pwd
+      ls -la
+      cd ./mock-aut-testing-fw
+      npm install
+      npm run test_junit
+    displayName: 'npm install and test'
+  - task: PublishTestResults@2
+    condition: succeededOrFailed()
+    inputs:
+      testRunner: JUnit
+      testResultsFiles: '**/test-results.xml'
+- job: third_mock_job
+  steps:
+  - bash: echo "this is the third job that does nothing more than this message"
 
