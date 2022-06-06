@@ -8,11 +8,17 @@ trigger:
 
 pool:
   name: Default
+strategy:
+  matrix:
+    node_16_x:
+      node_version: 16.x
+    node_17_x:
+      node_version: 17.x
 
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '17.x'
+    versionSpec: $(node_version)
   displayName: 'Install Node.js'
 - script: |
     pwd
