@@ -23,6 +23,7 @@ jobs:
   - bash: pwd
   - bash: ls -la
 - job: actual_job
+  dependsOn: first_mock_job
   steps:
   - task: NodeTool@0
     inputs:
@@ -42,6 +43,7 @@ jobs:
       testRunner: JUnit
       testResultsFiles: '**/test-results.xml'
 - job: third_mock_job
+  dependsOn: first_mock_job
   steps:
   - bash: echo "this is the third job that does nothing more than this message"
   - bash: pwd
