@@ -19,6 +19,8 @@ jobs:
 - job: first_mock_job
   steps:
   - bash: echo "this is the first job that does nothing more than this message"
+  - bash: pwd
+  - bash: ls -la
 - job: actual_job
   steps:
   - task: NodeTool@0
@@ -41,4 +43,6 @@ jobs:
 - job: third_mock_job
   steps:
   - bash: echo "this is the third job that does nothing more than this message"
+  - bash: pwd
+  - bash: ls -la
 
